@@ -2,8 +2,10 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Мастер-класс «Я имею право сказать нет» · Екатерина Шакти</title>
+<meta name="theme-color" content="#C4956A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23C4956A'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Georgia,serif'%3EШ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,9 +22,10 @@
   --r:24px; --ease:cubic-bezier(.22,1,.36,1); --t:.4s;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Manrope',system-ui,sans-serif;font-size:17px;line-height:1.72;color:var(--txt);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'Manrope',system-ui,sans-serif;font-size:17px;line-height:1.72;color:var(--txt);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
+button{-webkit-tap-highlight-color:transparent}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px}
 
 .wrap{max-width:1140px;margin:0 auto;padding:0 40px}
@@ -35,8 +38,13 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(
 .rv{opacity:0;transform:translateY(28px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
 .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
 .rv.on{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1!important;transform:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
 
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:'Manrope',sans-serif;font-weight:600;letter-spacing:.03em;cursor:pointer;border:none;transition:all var(--t) var(--ease);border-radius:100px}
+.btn:focus-visible{outline:2px solid var(--gold-d);outline-offset:3px}
 .btn-dark{background:var(--dark);color:var(--bg);font-size:15px;padding:17px 38px}
 .btn-dark:hover{background:var(--gold-d);transform:scale(1.02);box-shadow:0 8px 30px var(--gold-glow)}
 .btn-gold{background:var(--gold);color:#fff;font-size:15px;padding:17px 38px}
@@ -44,7 +52,7 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(
 .btn-outline{background:transparent;color:var(--gold);font-size:15px;padding:15px 34px;border:1.5px solid var(--gold)}
 .btn-outline:hover{background:var(--gold-bg);transform:scale(1.02)}
 
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 110px;position:relative;background:linear-gradient(155deg,#FCF9F7 0%,#F5F0EC 45%,#EDE6DF 100%);overflow:hidden}
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 110px;position:relative;background:linear-gradient(155deg,#FCF9F7 0%,#F5F0EC 45%,#EDE6DF 100%);overflow:hidden}
 .hero::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;border:1px solid var(--gold);opacity:.08}
 .hero h1{font-size:clamp(32px,5vw,56px);max-width:820px;margin-bottom:24px;opacity:0;animation:fsu .9s var(--ease) .4s forwards}
 .hero h1 .sub{display:block;font-size:0.5em;font-weight:400;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:14px}
@@ -66,7 +74,7 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(
 .speaker-grid{display:grid;grid-template-columns:380px 1fr;gap:70px;align-items:start}
 .speaker-photo-wrap{position:relative}
 .speaker-photo-wrap::before{content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;border:1.5px solid var(--gold);border-radius:var(--r);opacity:.3;pointer-events:none}
-.speaker-photo{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-lg)}
+.speaker-photo{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-lg);background:var(--bg3)}
 .speaker-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(44,36,32,.35));z-index:1}
 .speaker-photo img{width:100%;height:540px;object-fit:cover;object-position:center top;filter:saturate(.9) contrast(1.05);transition:transform .65s ease}
 .speaker-photo:hover img{transform:scale(1.03)}
@@ -117,8 +125,9 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(
 .tariff-card .features li:last-child{border-bottom:none}
 .tariff-card .features li::before{content:'✓';color:var(--gold);font-weight:700}
 
-.widget-container{display:none;margin-top:20px;padding:10px;background:var(--bg);border-radius:12px;border:1px solid var(--bdr)}
+.widget-container{display:none;margin-top:20px;padding:10px;background:var(--bg);border-radius:12px;border:1px solid var(--bdr);text-align:left}
 .widget-container.active{display:block}
+.widget-container p{margin:0}
 
 .cta-section{background:var(--bg);padding:100px 0;text-align:center}
 .cta-section .inner{max-width:680px;margin:0 auto}
@@ -154,13 +163,21 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(
 @media(max-width:480px){
   .hero h1{font-size:28px}
   .hero-sub{font-size:16px}
-  .btn{padding:14px 24px;font-size:14px}
+  .btn{padding:14px 24px;font-size:14px;width:100%;justify-content:center}
+  .hero-cta .btn{width:auto}
   .sec-title{font-size:24px}
   .tariff-card .price{font-size:32px}
   .tariff-card{padding:28px 20px}
   .mc-image .overlay h3{font-size:22px}
   .bonus-block{padding:20px 16px}
   .bonus-block h4{font-size:18px}
+}
+@media(max-width:380px){
+  .wrap{padding:0 16px}
+  .hero{padding:90px 16px 70px}
+  .hero h1{font-size:25px}
+  .speaker-photo img{height:320px}
+  .tariff-card{padding:24px 16px}
 }
 </style>
 </head>
@@ -198,7 +215,7 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(
     <div class="speaker-grid">
       <div class="speaker-photo-wrap rv">
         <div class="speaker-photo">
-          <img src="foto-mama.jpg" alt="Екатерина Шакти Савинова" loading="lazy">
+          <img src="/foto-mama.jpg" alt="Екатерина Шакти Савинова" loading="lazy" onerror="this.onerror=null;this.src='https://i.pinimg.com/736x/2L/3h/gS/2L3hgSCEr.jpg';">
         </div>
       </div>
       <div>
@@ -302,7 +319,7 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(
           <li>Групповая работа</li>
           <li>Бонус: бесплатная консультация</li>
         </ul>
-        <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="showWidget('single')">Оформить заказ</button>
+        <button type="button" class="btn btn-gold" style="width:100%;justify-content:center;" onclick="showWidget('single')">Оформить заказ</button>
         <div id="widget-single" class="widget-container"></div>
       </div>
       <!-- Тариф 2 -->
@@ -317,7 +334,7 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(
           <li>Групповая работа вдвоём</li>
           <li>Бонус: 2 консультации</li>
         </ul>
-        <button class="btn btn-gold" style="width:100%;justify-content:center;background:var(--gold-d);" onclick="showWidget('double')">Оформить заказ</button>
+        <button type="button" class="btn btn-gold" style="width:100%;justify-content:center;background:var(--gold-d);" onclick="showWidget('double')">Оформить заказ</button>
         <div id="widget-double" class="widget-container"></div>
       </div>
     </div>
@@ -345,7 +362,7 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(
       <div class="dv" style="margin-bottom:40px;"><div class="dv-line" style="background:linear-gradient(90deg,transparent,rgba(196,149,106,.4),transparent);"></div><div class="dv-gem"></div><div class="dv-line" style="background:linear-gradient(90deg,transparent,rgba(196,149,106,.4),transparent);"></div></div>
       <h2>Остались вопросы?</h2>
       <p>Напишите мне в Telegram, и я отвечу на всё, что вас волнует.</p>
-      <a href="http://t.me/triumf505" target="_blank" rel="noopener" class="btn btn-outline" style="border-color:rgba(196,149,106,.4);color:var(--gold);margin-bottom:30px;">Написать в Telegram</a>
+      <a href="https://t.me/triumf505" target="_blank" rel="noopener" class="btn btn-outline" style="border-color:rgba(196,149,106,.4);color:var(--gold);margin-bottom:30px;">Написать в Telegram</a>
       <div style="font-size:14px;color:rgba(255,255,255,.4);">
         © 2026 Екатерина Шакти Савинова · Мастер-класс «Я имею право сказать нет»
       </div>
@@ -353,7 +370,7 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(
   </div>
 </footer>
 
-<!-- ===== ОСНОВНОЙ СКРИПТ (с динамической загрузкой виджетов) ===== -->
+<!-- ===== ОСНОВНОЙ СКРИПТ ===== -->
 <script>
 // Анимация при скролле
 const io = new IntersectionObserver(entries => {
@@ -367,7 +384,7 @@ window.addEventListener('scroll', () => {
   const h = document.documentElement;
   const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
   if(scrollBar) scrollBar.style.width = scrolled + '%';
-});
+}, { passive: true });
 
 // Анимация счётчиков
 const statEls = document.querySelectorAll('.stat-num');
@@ -394,65 +411,92 @@ const statIO = new IntersectionObserver(entries => {
 }, { threshold: 0.4 });
 statEls.forEach(el => statIO.observe(el));
 
-// === НАДЁЖНЫЙ МЕХАНИЗМ ВИДЖЕТОВ ===
+// === МЕХАНИЗМ ЗАГРУЗКИ ВИДЖЕТОВ GETCOURSE ===
+// ВАЖНО: скрипт виджета GetCourse при выполнении ищет своё положение в DOM
+// (document.currentScript.parentElement), чтобы вставить туда форму/iframe.
+// Раньше скрипт добавлялся в <head>, поэтому форма оказывалась внутри <head>
+// и была невидима — отсюда и жалоба "виджет не появляется". Теперь скрипт
+// добавляется НЕПОСРЕДСТВЕННО в целевой контейнер тарифа.
+const WIDGETS = {
+  single: {
+    scriptId: 'b3b2c09e2e6447f9e9ce1e2e0f2a106b87c2162c',
+    src: 'https://shaktischool.getcourse.ru/pl/lite/widget/script?id=1628699'
+  },
+  double: {
+    scriptId: 'e34e21a9dd13224fda90923949237f2e58d49812',
+    src: 'https://shaktischool.getcourse.ru/pl/lite/widget/script?id=1628701'
+  }
+};
+
+function showFallback(container) {
+  container.innerHTML =
+    '<p style="color:#B03A2E;font-size:14px;line-height:1.6;">' +
+    'Не удалось загрузить форму оплаты. Попробуйте обновить страницу или напишите нам в ' +
+    '<a href="https://t.me/triumf505" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">Telegram</a>.' +
+    '</p>';
+  container.dataset.loaded = 'false';
+  container.dataset.loading = 'false';
+}
+
 function showWidget(type) {
   const containerId = type === 'single' ? 'widget-single' : 'widget-double';
   const container = document.getElementById(containerId);
-  if (!container) return;
+  const cfg = WIDGETS[type];
+  if (!container || !cfg) return;
 
-  // Если виджет уже загружен и показан – просто переключаем видимость
-  if (container.classList.contains('active')) {
-    container.classList.remove('active');
+  // Виджет уже загружен ранее — просто открываем/закрываем контейнер
+  if (container.dataset.loaded === 'true') {
+    container.classList.toggle('active');
     return;
   }
 
-  // Если виджет уже загружен, но скрыт – показываем
-  if (container.innerHTML.trim() !== '') {
+  // Загрузка уже идёт — не запускаем повторно
+  if (container.dataset.loading === 'true') {
     container.classList.add('active');
     return;
   }
 
-  // В первый раз – загружаем скрипт виджета
-  const scriptId = type === 'single' 
-    ? 'b3b2c09e2e6447f9e9ce1e2e0f2a106b87c2162c' 
-    : 'e34e21a9dd13224fda90923949237f2e58d49812';
-  const scriptSrc = type === 'single'
-    ? 'https://shaktischool.getcourse.ru/pl/lite/widget/script?id=1628699'
-    : 'https://shaktischool.getcourse.ru/pl/lite/widget/script?id=1628701';
+  container.dataset.loading = 'true';
+  container.classList.add('active');
+  container.innerHTML = '<p style="color:var(--muted);font-size:14px;">Загрузка формы оплаты…</p>';
 
-  // Удаляем старый скрипт, если есть
-  const oldScript = document.getElementById(scriptId);
+  // На случай, если скрипт GetCourse завис или недоступен — показываем fallback
+  const fallbackTimer = setTimeout(() => {
+    if (container.dataset.loaded !== 'true') {
+      showFallback(container);
+    }
+  }, 10000);
+
+  // Убираем предыдущий экземпляр скрипта этого виджета, если он был
+  const oldScript = document.getElementById(cfg.scriptId);
   if (oldScript) oldScript.remove();
 
-  // Создаём новый скрипт
   const script = document.createElement('script');
-  script.id = scriptId;
-  script.src = scriptSrc;
-  script.async = true;
-  script.onload = function() {
-    // После загрузки скрипта показываем контейнер
-    container.classList.add('active');
-    // Если виджет требует явной инициализации – вызываем
-    if (window.initGetCourseWidget) {
-      window.initGetCourseWidget(scriptId);
-    }
-    // Если есть событие от GetCourse – пробуем принудительно обновить
-    if (window.getCourseWidget && typeof window.getCourseWidget.init === 'function') {
-      window.getCourseWidget.init(scriptId);
-    }
-  };
-  script.onerror = function() {
-    container.innerHTML = '<p style="color:red;font-size:14px;">Не удалось загрузить форму оплаты. Попробуйте обновить страницу или напишите нам в Telegram.</p>';
-    container.classList.add('active');
-  };
-  document.head.appendChild(script);
+  script.id = cfg.scriptId;
+  script.src = cfg.src;
+  script.async = false; // сохраняем порядок выполнения, как ожидает виджет GetCourse
 
-  // Показываем контейнер с индикатором загрузки
-  container.innerHTML = '<p style="color:var(--muted);font-size:14px;">Загрузка формы оплаты...</p>';
-  container.classList.add('active');
+  script.onload = function () {
+    clearTimeout(fallbackTimer);
+    container.dataset.loaded = 'true';
+    container.dataset.loading = 'false';
+    // Убираем текст "Загрузка..." после того, как виджет вставил свой контент
+    const loadingMsg = container.querySelector('p');
+    if (loadingMsg && container.children.length > 1) {
+      loadingMsg.remove();
+    }
+  };
+
+  script.onerror = function () {
+    clearTimeout(fallbackTimer);
+    showFallback(container);
+  };
+
+  // Скрипт добавляется В КОНТЕЙНЕР, а не в document.head — это и есть исправление
+  container.appendChild(script);
 }
 
-// Плавный скролл
+// Плавный скролл по якорям
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
